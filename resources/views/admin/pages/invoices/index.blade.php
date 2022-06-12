@@ -7,6 +7,7 @@
         <th>#</th>
         <th>invoice id</th>
         <th>user</th>
+        <th>details</th>
         <th>edit</th>
         <th>delete</th>
     </tr>
@@ -15,6 +16,7 @@
         <td>{{$loop->iteration}}</td>
         <td>{{$invoice->invoice_id}}</td>
         <td>{{$invoice->user->name}}</td>
+        <td><a href="{{route('invoices.show',$invoice->invoice_id)}}">show details</a></td>
         <td>
             <!-- Button trigger modal -->
             <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal"

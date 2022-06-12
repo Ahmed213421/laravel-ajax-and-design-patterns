@@ -47,7 +47,8 @@ class InvoiceController extends Controller
      */
     public function show($id)
     {
-        //
+        $invoice = Invoice::where('invoice_id',$id)->first();
+        return view('admin.pages.invoices.show',compact('invoice'));
     }
 
     /**

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Events\message;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +39,9 @@ Route::group(['middleware'=>'auth:web'],function(){
     Route::get('/pay',[App\Http\Controllers\fatoorahcontroller::class,'payOrder'])->name('payment');
         
     Route::get('/call_back',[App\Http\Controllers\fatoorahcontroller::class,'paymentCallBack']);
-
-});
+    Route::get('/chat', [App\Http\Controllers\ChatsController::class,'index'])->name('chat');
+    Route::post('messages', function(Request $request){
+        event(new message($request->username,$request->message));
+        return["success"=>true];
+    });
+}); 

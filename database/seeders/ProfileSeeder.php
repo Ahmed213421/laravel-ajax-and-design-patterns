@@ -19,11 +19,21 @@ class ProfileSeeder extends Seeder
     {
         DB::table('users')->delete();
 
-        User::insert([
-            'name' => 'ahmed samir',
-            'email' => 'ahmed@gm',
-            'password' => Hash::make('12345678'),
-            'photo' => 'avatar.jpg'
-        ]);
+        $user = [
+            [
+                'name' => 'ahmed samir',
+                'email' => 'ahmed@gm',
+                'password' => Hash::make('12345678'),
+                'photo' => 'avatar.jpg',
+            ],
+            [
+                'name' => 'mohamed ahmed',
+                'email' => 'john@gm',
+                'password' => Hash::make('12345678'),
+                'photo' => 'avatar.jpg'
+            ]
+            ];
+
+        User::insert($user);
     }
 }
